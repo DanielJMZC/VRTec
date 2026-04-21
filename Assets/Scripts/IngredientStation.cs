@@ -23,8 +23,6 @@ public class IngredientStation : MonoBehaviour
 
     void OnGrabStation(SelectEnterEventArgs args)
     {
-        GetComponent<Renderer>().material.color = Color.green;
-
         GameObject ingredient = Instantiate(ingredientPrefab, 
         args.interactorObject.transform.position,
         args.interactorObject.transform.rotation);
