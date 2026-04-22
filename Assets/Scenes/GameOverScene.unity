@@ -9334,6 +9334,34 @@ PrefabInstance:
         last customer leaves. \n\nBut first\u2014service is not ready. Prepare the
         line: plates, ingredients, kitchen tools. \n\nThe system is watching."
       objectReference: {fileID: 0}
+    - target: {fileID: 5606964658375275164, guid: a8b3a3719e801429e82a69ca56b33787, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606964658375275164, guid: a8b3a3719e801429e82a69ca56b33787, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606964658375275164, guid: a8b3a3719e801429e82a69ca56b33787, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1341335988}
+    - target: {fileID: 5606964658375275164, guid: a8b3a3719e801429e82a69ca56b33787, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606964658375275164, guid: a8b3a3719e801429e82a69ca56b33787, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: newMatch
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606964658375275164, guid: a8b3a3719e801429e82a69ca56b33787, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOverController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606964658375275164, guid: a8b3a3719e801429e82a69ca56b33787, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7700086156239937651, guid: a8b3a3719e801429e82a69ca56b33787, type: 3}
       propertyPath: m_text
       value: Replay
