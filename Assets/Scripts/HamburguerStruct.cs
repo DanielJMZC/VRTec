@@ -3,29 +3,20 @@ using UnityEngine;
 
 public class HamburguerStruct : MonoBehaviour
 {
-    public static HamburguerStruct Instance { get; private set; }
-    private const string TOP="UpperBun";
-    private const string BOTTOM="LowerBun";
-    private const string MEAT="Meat_Prepared";
-    private const string CHEESE="Cheese_Prepared";
-    private const string TOMATO="Tomato_Prepared";
-    private const string ONION="Onion_Prepared";
-    private const string LETTUCE="Lettuce_Prepared";
+    private const string TOP = "UpperBun";
+    private const string BOTTOM = "LowerBun";
+    private const string MEAT = "Meat_Prepared";
+    private const string CHEESE = "Cheese_Prepared";
+    private const string TOMATO = "Tomato_Prepared";
+    private const string ONION = "Onion_Prepared";
+    private const string LETTUCE = "Lettuce_Prepared";
 
-    private Dictionary<string, List<string>> recipes=new Dictionary<string, List<string>>();
-    private List<string> actualrecipe=new List<string>();
+    private Dictionary<string, List<string>> recipes = new Dictionary<string, List<string>>();
+    private List<string> actualrecipe = new List<string>();
 
     void Awake()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-            DefineRecipes();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        DefineRecipes();
     }
 
     private void DefineRecipes()
@@ -44,14 +35,17 @@ public class HamburguerStruct : MonoBehaviour
         actualrecipe.Add("NoTomato");
         actualrecipe.Add("NoOnion");
     }
+
     public List<string> GetOrder(out string name)
     {
         int randomIndex = Random.Range(0, actualrecipe.Count);
-        string selectedName=actualrecipe[randomIndex];
+        string selectedName = actualrecipe[randomIndex];
+
         name = selectedName;
-        if(recipes.ContainsKey(selectedName))
+
+        if (recipes.ContainsKey(selectedName))
         {
-            List<string> order= new List<string>();
+            List<string> order = new List<string>();
             order.Add(BOTTOM);
             order.AddRange(recipes[selectedName]);
             order.Add(TOP);
