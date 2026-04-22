@@ -23,23 +23,27 @@ public class BurgerStack : MonoBehaviour
 
         void SnapToStack(GameObject ingredient)
         {
+            
             BoxCollider col = ingredient.GetComponent<BoxCollider>();
 
-            float colliderThickness = col.bounds.size.y;
+            float colliderThickness = col.bounds.size.y; //* ingredient.transform.localScale.y;;
 
-            float distanceToBottom = ingredient.transform.position.y - col.bounds.min.y;
+            float distanceToBottom = col.bounds.extents.y + (ingredient.transform.position.y - col.bounds.center.y);
 
             float spawnY = stackPoint.position.y + stackHeight + distanceToBottom;
 
+            ingredient.transform.SetParent(this.transform);
             ingredient.transform.position = new Vector3(stackPoint.position.x, spawnY, stackPoint.position.z);
             ingredient.transform.rotation = stackPoint.rotation;
-            ingredient.transform.SetParent(this.transform);
+          
 
             stackHeight += colliderThickness;
 
             Rigidbody rb = ingredient.GetComponent<Rigidbody>();
             if (rb != null) 
             {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
                 rb.isKinematic = true;
                 rb.detectCollisions = false; 
             }
