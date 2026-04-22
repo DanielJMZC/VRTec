@@ -4591,15 +4591,15 @@ MonoBehaviour:
   ClientDestination: {fileID: 439510026}
   player: {fileID: 1375737368}
   startCanvas: {fileID: 1913832531}
-  prepTimer: 5
-  serveTimer: 5
+  prepTimer: 180
+  serveTimer: 360
   timer: {fileID: 6402371959711212800}
   timerHeader: {fileID: 1690882754407972968}
   client: {fileID: 1546513618}
   sFXManager: {fileID: 800542449}
   spawnController: {fileID: 1759295565}
   score: 0
-  quota: 3
+  quota: 1
 --- !u!1 &320593660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 16584ce06e7564f958ffb604caf1f0cb, type: 3}
@@ -32410,8 +32410,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnController
   clientPrefab: {fileID: 4656761917748278590, guid: 1f9b03a834b990848ab59aec312ced92, type: 3}
   spawnPoint: {fileID: 1759295566}
-  minSpawnDelay: 10
-  maxSpawnDelay: 20
+  minSpawnDelay: 60
+  maxSpawnDelay: 60
 --- !u!4 &1759295566
 Transform:
   m_ObjectHideFlags: 0

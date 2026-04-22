@@ -57,6 +57,12 @@ public class GameController : MonoBehaviour
             timer.text = FormatTime(timeRemaining);
             yield return new WaitForSeconds(1);
             timeRemaining--;
+
+            
+            if (timeRemaining == spawnController.minSpawnDelay)
+            {
+                spawnController.StartSpawning();
+            }
         }
     }
 
@@ -75,15 +81,7 @@ public class GameController : MonoBehaviour
     {
         yield return StartCoroutine(PrepTimer());
         timerHeader.text = "Time to Serve!";
-        if (spawnController != null)
-        {
-            Debug.Log("SpawnController encontrado, iniciando spawn");
-            spawnController.StartSpawning();
-        }
-        else
-        {
-            Debug.LogError("SpawnController NO ESTÁ ASIGNADO en el inspector de GameController");
-        }
+       
         yield return StartCoroutine(ServeTimer());
         yield return StartCoroutine(EndMatch());
     }

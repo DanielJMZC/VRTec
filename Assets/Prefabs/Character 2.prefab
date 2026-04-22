@@ -1157,11 +1157,11 @@ MonoBehaviour:
   canvasDialogue: {fileID: 3438583012573370149}
   textDialogue: {fileID: 228128508589859344}
   updateSpeed: 0.01
-  maxTemp: 10
-  minTemp: 5
+  maxTemp: 55
+  minTemp: 55
   clienteTimer: {fileID: 6566050720610115828}
   hamburguerStruct: {fileID: 0}
-  waitTimeBeforeOffView: 50
+  waitTimeBeforeOffView: 45
   order: []
   nombreOrden: 
   riddle: 

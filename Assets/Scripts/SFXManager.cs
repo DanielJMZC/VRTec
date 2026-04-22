@@ -1,4 +1,4 @@
-using UnityEditor.Search;
+
 using UnityEngine;
 
 public class SFXManager : MonoBehaviour
@@ -74,7 +74,7 @@ public class SFXManager : MonoBehaviour
     {
         PlaySFX(buttonClickSFX);
     }
-    
+
     public void PlayClientAngrySFX()
     {
         PlaySFX(clientAngrySFX);

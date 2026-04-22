@@ -6,8 +6,8 @@ public class SpawnController : MonoBehaviour
     [SerializeField] private GameObject clientPrefab;
     [SerializeField] private Transform spawnPoint;
 
-    [SerializeField] private float minSpawnDelay;
-    [SerializeField] private float maxSpawnDelay;
+    [SerializeField] public float minSpawnDelay;
+    [SerializeField] public float maxSpawnDelay;
 
     private bool canSpawn = false;
 
