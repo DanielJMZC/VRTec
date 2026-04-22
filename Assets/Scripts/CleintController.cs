@@ -9,13 +9,14 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(NavMeshAgent))]
 public class CleintController : MonoBehaviour
 {
-    static public CleintController Instance;
-    [SerializeField] private Transform target;
-    [SerializeField] private Transform offView;
+    private Transform target;
+    private Transform offView;
     [SerializeField] private float updateSpeed = 0.01f;
     [SerializeField] private float maxTemp;
     [SerializeField] private float minTemp;
     [SerializeField] private ClienteTimer clienteTimer;
+
+    [SerializeField] private HamburguerStruct hamburguerStruct;
     public float waitTimeBeforeOffView=50f;
 
     private NavMeshAgent agent;
@@ -26,13 +27,18 @@ public class CleintController : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
         agent = GetComponent<NavMeshAgent>();
         waitTimeBeforeOffView= Random.Range(minTemp, maxTemp);
+
+        clienteTimer = GetComponent<ClienteTimer>();
+        hamburguerStruct = FindFirstObjectByType<HamburguerStruct>();
     }
 
     void Start()
     {
+        target = GameController.Instance.ClientTarget;
+        offView = GameController.Instance.ClientDestination;
+
         StartCoroutine(FollowTarget());
         if (clienteTimer != null)
         {
@@ -43,10 +49,9 @@ public class CleintController : MonoBehaviour
             Debug.LogWarning("ClienteTimer no está asignado en CleintController");
         }
 
-        if(HamburguerStruct.Instance != null)
+        if(hamburguerStruct != null)
         {
-            Debug.Log("HamburguerStruct.Instance está inicializado");
-            order = HamburguerStruct.Instance.GetOrder(out nombreOrden);
+            order = hamburguerStruct.GetOrder(out nombreOrden);
             Debug.Log("Orden generada: " + nombreOrden);
         }else
         {

@@ -1,48 +1,44 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using TMPro;
 
 public class ClienteTimer : MonoBehaviour
 {
     float time;
     [SerializeField] private TextMeshPro timerText;
-    
-    void Start()
+    private CleintController client;
+
+    void Awake()
     {
-        if (CleintController.Instance != null)
+        client = GetComponent<CleintController>();
+
+        
+        if (client != null)
         {
-            time = CleintController.Instance.waitTimeBeforeOffView;
-        }
-        else
-        {
-            Debug.Log("CleintController.Instance no está inicializado");
+            time = client.waitTimeBeforeOffView;
         }
     }
+
+
     void ActiveText()
     {
-       timerText.text = time.ToString("F0"); 
+        timerText.text = time.ToString("F0"); 
     }
+
     public void StartTimer()
     {
         StartCoroutine(MatchTime());
     }
-    void CheckTime(){
-        if (time <= 0f)
-        {
-            timerText.text = " ";
-            StopAllCoroutines();
-            
-        }else{
-            StartCoroutine(MatchTime());
-        }
-    }
+
     IEnumerator MatchTime()
     {
-        yield return new WaitForSeconds(1);
-        time-=1f;
-        ActiveText();
-        CheckTime();
+        while (time > 0f)
+        {
+            yield return new WaitForSeconds(1f);
+            time -= 1f;
+            ActiveText();
+        }
+
+        timerText.text = "";
     }
 }
