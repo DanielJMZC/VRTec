@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Food
+  - Hammer
+  - FridgeKey
+  - KitchenDoorKey
   layers:
   - Default
   - TransparentFX

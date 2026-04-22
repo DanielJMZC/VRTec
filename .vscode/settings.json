@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "VRTEC.slnx"
+    "dotnet.defaultSolution": "VRTec.slnx"
 }
