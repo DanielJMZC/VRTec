@@ -327,4 +327,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe20f46524eb14d1b887e4fc5c7587f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Food
-  preparedPrefab: {fileID: 1230404344121234699, guid: c6d33c33d0ecb48589a0d5cd7861af49, type: 3}
+  preparedPrefab: {fileID: 3958147510612337642, guid: c6d33c33d0ecb48589a0d5cd7861af49, type: 3}
