@@ -12,6 +12,8 @@ public class CleintController : MonoBehaviour
     static public CleintController Instance;
     [SerializeField] private Transform target;
     [SerializeField] private Transform offView;
+    [SerializeField] private string codigoTarget = "FollowPoint";
+    [SerializeField] private string codigoOffView = "ExitPoint";
     [SerializeField] private float updateSpeed = 0.01f;
     [SerializeField] private float maxTemp;
     [SerializeField] private float minTemp;
@@ -26,9 +28,23 @@ public class CleintController : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+
         agent = GetComponent<NavMeshAgent>();
         waitTimeBeforeOffView= Random.Range(minTemp, maxTemp);
+
+        if (target == null && !string.IsNullOrEmpty(codigoTarget))
+        {
+            target = BuscarTransformPorCodigo(codigoTarget);
+            if (target == null)
+                Debug.LogWarning("No se encontró target con código: " + codigoTarget);
+        }
+        
+        if (offView == null && !string.IsNullOrEmpty(codigoOffView))
+        {
+            offView = BuscarTransformPorCodigo(codigoOffView);
+            if (offView == null)
+                Debug.LogWarning("No se encontró offView con código: " + codigoOffView);
+        }
     }
 
     void Start()
@@ -62,7 +78,13 @@ public class CleintController : MonoBehaviour
         {
             
             agent.SetDestination(target.position);
-
+            if (target != null) // ADD THIS CHECK!
+            {
+                    agent.SetDestination(target.position);
+            }
+            else{
+                Debug.LogWarning("Target is null!");
+            }
             
             if (!isRetiring && target != offView && HasReachedDestination())
             {
@@ -97,5 +119,38 @@ public class CleintController : MonoBehaviour
         
     
         target = offView;
+    }
+    
+    private Transform BuscarTransformPorCodigo(string codigo)
+    {
+        // Busca por nombre de objeto
+        GameObject foundObject = GameObject.Find(codigo);
+        if (foundObject != null)
+            return foundObject.transform;
+        
+        // Busca por tag
+        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag(codigo);
+        if (taggedObjects.Length > 0)
+            return taggedObjects[0].transform;
+        
+        // Busca en hijos recursivamente
+        Transform found = BuscarEnHijos(transform.parent, codigo);
+        if (found != null)
+            return found;
+        
+        return null;
+    }
+    
+    private Transform BuscarEnHijos(Transform padre, string codigo)
+    {
+        if (padre == null)
+            return null;
+        
+        foreach (Transform hijo in padre.GetComponentsInChildren<Transform>())
+        {
+            if (hijo.gameObject.name == codigo)
+                return hijo;
+        }
+        return null;
     }
 }
