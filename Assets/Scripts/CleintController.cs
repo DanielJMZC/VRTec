@@ -1,26 +1,57 @@
 using UnityEngine;
-using System.Collections;
 using UnityEngine.AI;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine.Rendering;
+
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class PruebasNavMesh : MonoBehaviour
+public class CleintController : MonoBehaviour
 {
+    static public CleintController Instance;
     [SerializeField] private Transform target;
     [SerializeField] private Transform offView;
-    [SerializeField] private float updateSpeed = 0.1f;
-    [SerializeField] private float waitTimeBeforeOffView = 3.0f; // Tiempo de espera en segundos
+    [SerializeField] private float updateSpeed = 0.01f;
+    [SerializeField] private float maxTemp;
+    [SerializeField] private float minTemp;
+    [SerializeField] private ClienteTimer clienteTimer;
+    public float waitTimeBeforeOffView=50f;
 
     private NavMeshAgent agent;
     private bool isRetiring = false;
+    public List<string> order;
+    public string nombreOrden;
+
 
     void Awake()
     {
+        Instance = this;
         agent = GetComponent<NavMeshAgent>();
+        waitTimeBeforeOffView= Random.Range(minTemp, maxTemp);
     }
 
     void Start()
     {
         StartCoroutine(FollowTarget());
+        if (clienteTimer != null)
+        {
+            clienteTimer.StartTimer();
+        }
+        else
+        {
+            Debug.LogWarning("ClienteTimer no está asignado en CleintController");
+        }
+
+        if(HamburguerStruct.Instance != null)
+        {
+            Debug.Log("HamburguerStruct.Instance está inicializado");
+            order = HamburguerStruct.Instance.GetOrder(out nombreOrden);
+            Debug.Log("Orden generada: " + nombreOrden);
+        }else
+        {
+            Debug.LogWarning("HamburguerStruct.Instance no está inicializado");
+        }
     }
 
     private IEnumerator FollowTarget()
@@ -29,13 +60,13 @@ public class PruebasNavMesh : MonoBehaviour
         
         while (enabled)
         {
-            // Actualizamos el destino
+            
             agent.SetDestination(target.position);
 
-            // Verificamos si ya llegó al destino (Target) y si no está ya en proceso de retirarse
+            
             if (!isRetiring && target != offView && HasReachedDestination())
             {
-                // Iniciamos la rutina de retirada
+                
                 StartCoroutine(WaitAndGoOffView());
             }
 
@@ -45,7 +76,7 @@ public class PruebasNavMesh : MonoBehaviour
 
     private bool HasReachedDestination()
     {
-        // Verificamos si el agente está cerca del destino y se ha detenido
+        
         if (!agent.pathPending)
         {
             if (agent.remainingDistance <= agent.stoppingDistance)
@@ -61,15 +92,10 @@ public class PruebasNavMesh : MonoBehaviour
 
     private IEnumerator WaitAndGoOffView()
     {
-        isRetiring = true; // Bloqueamos para que no se ejecute varias veces
-        
-        // Esperamos el tiempo configurado
+        isRetiring = true;
         yield return new WaitForSeconds(waitTimeBeforeOffView);
         
-        // Cambiamos el objetivo al punto fuera de vista
+    
         target = offView;
-        
-        // Opcional: Si quieres que una vez en OffView vuelva a buscar al Target original, 
-        // tendrías que resetear 'isRetiring' y el 'target' en otro momento.
     }
 }
