@@ -54,7 +54,8 @@ public class PanCook : MonoBehaviour
 
             ingredient.GetComponent<XRGrabInteractable>().enabled = false;
             
-            yield return new WaitForSeconds(15);
+            GameController.Instance.sFXManager.PlayMeatSFX();
+            yield return new WaitForSeconds(5);
 
             Destroy(ingredient);
             Instantiate(prefab, stackPoint.position, stackPoint.rotation);

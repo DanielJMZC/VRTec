@@ -18,6 +18,8 @@ public class KitchenDoor : MonoBehaviour
         Debug.Log("Ow");
         if (collision.gameObject.CompareTag("KitchenDoorKey"))
         {
+             GameController.Instance.sFXManager.PlayDoorSFX();
+             GameController.Instance.sFXManager.PlayKeySFX();
             isOpen = !isOpen;
             transform.localEulerAngles = isOpen ? openRotation : closedRotation;
             Destroy(collision.gameObject);

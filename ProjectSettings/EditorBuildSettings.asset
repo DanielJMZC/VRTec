@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: 32ec8d651f3346242bb32a6d69b747b9
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 92df17f73a5f746c084b219dda22c94c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

@@ -9,6 +9,7 @@ public class LidController : MonoBehaviour
         Debug.Log("Ow");
         if (collision.gameObject.CompareTag("Hammer"))
         {
+            GameController.Instance.sFXManager.PlayHammerBreakSFX();
             Debug.Log("HAMMER");
             spawnpoint.GetComponent<IngredientStation>().enabled = true;
             Destroy(gameObject);

@@ -155,6 +155,7 @@ public class CleintController : MonoBehaviour
         {
             Debug.Log("Cliente ha recibido un plato");
             CompararPlatos(other.gameObject);
+            Destroy(other.gameObject);
         }
     }
 
@@ -175,6 +176,8 @@ public class CleintController : MonoBehaviour
             Debug.Log($"¡CORRECTO! El burger coincide con la orden '{nombreOrden}'");
             textDialogue.text = CorrectOrderDialogue[Random.Range(0, CorrectOrderDialogue.Count)];
             targetRenderer.material.color = Color.green;
+            GameController.Instance.sFXManager.PlayClientHappySFX();
+            GameController.Instance.UpdateScore(1);
             StartCoroutine(WaitAndGoOffView());
         }
         else
@@ -184,6 +187,7 @@ public class CleintController : MonoBehaviour
             Debug.Log($"Se recibió: {string.Join(", ", platoList)}");
             textDialogue.text = IncorrectOrderDialogue[Random.Range(0, IncorrectOrderDialogue.Count)];
             targetRenderer.material.color = Color.red;
+            GameController.Instance.sFXManager.PlayClientAngrySFX();
             StartExit(0.5f);
         }
     }

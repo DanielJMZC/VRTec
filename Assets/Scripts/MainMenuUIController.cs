@@ -13,6 +13,7 @@ public class MainMenuUIController : MonoBehaviour
 
     public void OnStartPressed()
     {
+            GameController.Instance.sFXManager.PlayButtonClickSFX();
         menuPanel.SetActive(false);
     }
 }

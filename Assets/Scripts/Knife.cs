@@ -10,6 +10,7 @@ public class Knife : MonoBehaviour
 
              if (food != null && food.preparedPrefab != null)
             {
+                GameController.Instance.sFXManager.PlayCutIngredientsSFX();
                 Instantiate(food.preparedPrefab, 
                             collision.transform.position, 
                             collision.transform.rotation);
