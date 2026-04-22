@@ -8,6 +8,10 @@ TagManager:
   - Hammer
   - FridgeKey
   - KitchenDoorKey
+  - Plato
+  - RestaurantKey
+  - PantryKey
+  - Pan
   layers:
   - Default
   - TransparentFX
