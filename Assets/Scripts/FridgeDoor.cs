@@ -19,6 +19,8 @@ public class FridgeDoor : MonoBehaviour
         Debug.Log("Ow");
         if (collision.gameObject.CompareTag("FridgeKey"))
         {
+            GameController.Instance.sFXManager.PlayDoorSFX();
+             GameController.Instance.sFXManager.PlayKeySFX();
             isOpen = !isOpen;
             transform.localEulerAngles = isOpen ? openRotation : closedRotation;
         }

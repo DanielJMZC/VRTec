@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6250793009183195017}
   - component: {fileID: 4145999290101428942}
   - component: {fileID: 7038919365831151573}
-  - component: {fileID: 1115508385263556241}
   - component: {fileID: -1870134117168299074}
   m_Layer: 0
   m_Name: Meat_Raw
@@ -136,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders:
-  - {fileID: 0}
+  - {fileID: -1870134117168299074}
   m_InteractionLayers:
     m_Bits: 4294967295
   m_DistanceCalculationMode: 1
@@ -294,19 +293,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &1115508385263556241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4953070721710269836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42e1ece83c8d74876b770c0fdbb38c2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Meat
-  preparedPrefab: {fileID: 178527446596572757, guid: 2dd65bd3c23bd443a92fd7120d24a2e8, type: 3}
 --- !u!65 &-1870134117168299074
 BoxCollider:
   m_ObjectHideFlags: 0

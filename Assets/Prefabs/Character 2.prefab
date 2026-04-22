@@ -65,8 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I'm visiting a friend who's vegetarian. I figured I'd try what she eats.
-    Something fresh, with that sharp kick.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d86e933e6ca983a45ad912f7d7fa9882, type: 2}
   m_sharedMaterial: {fileID: -5660775149628104760, guid: d86e933e6ca983a45ad912f7d7fa9882, type: 2}
@@ -919,7 +918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4349548564948099270
 RectTransform:
   m_ObjectHideFlags: 0
@@ -927,17 +926,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3438583012573370149}
-  m_LocalRotation: {x: -0, y: 0.9992605, z: -0, w: 0.0384522}
-  m_LocalPosition: {x: 0, y: 0, z: -0.13}
+  m_LocalRotation: {x: 0.04913854, y: 0.90302587, z: -0.10545274, w: 0.41353294}
+  m_LocalPosition: {x: 0, y: 0, z: 1.485}
   m_LocalScale: {x: 0.0013401458, y: 0.0013401456, z: 0.0013401458}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3130709316622009360}
   m_Father: {fileID: 5385370695642033076}
-  m_LocalEulerAnglesHint: {x: 0, y: 175.593, z: 0}
+  m_LocalEulerAnglesHint: {x: 13.361, y: 130.801, z: 0.09}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.35, y: 4.3672}
+  m_AnchoredPosition: {x: -1.64, y: 0.773}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1600856640540313278
@@ -1225,8 +1224,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 1
+  m_Height: 8
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4965078553649908264

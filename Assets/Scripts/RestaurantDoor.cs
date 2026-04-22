@@ -18,6 +18,8 @@ public class RestaurantDoor : MonoBehaviour
         Debug.Log("Ow");
         if (collision.gameObject.CompareTag("RestaurantKey"))
         {
+             GameController.Instance.sFXManager.PlayDoorSFX();
+             GameController.Instance.sFXManager.PlayKeySFX();
             isOpen = !isOpen;
             transform.localEulerAngles = isOpen ? openRotation : closedRotation;
                  Destroy(collision.gameObject);

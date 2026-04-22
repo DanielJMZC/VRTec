@@ -13,6 +13,7 @@ public class ShowCanvasOnClick : MonoBehaviour
 
     public void OnButtonPressed()
     {
+            GameController.Instance.sFXManager.PlayButtonClickSFX();
         targetCanvas.SetActive(true);
     }
 }
