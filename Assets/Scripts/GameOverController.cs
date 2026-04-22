@@ -12,7 +12,7 @@ public class GameOverController : MonoBehaviour
     //[SerializeField] private SFXManager sfxManager;
     [SerializeField] private Light spotlight;
     [SerializeField] private GameObject player;
-    
+    [SerializeField] private SFXManager sfxManager;
     
     void Start()
     {
@@ -24,12 +24,14 @@ public class GameOverController : MonoBehaviour
             titleText.text = "Shift completed";
             gameOverText.text = "Congratulations. Your efficiency metrics were acceptable. You have earned the right to sleep for 4 hours before your next mandatory shift. \n\nDon't get used to the sunlight.";
             spotlight.intensity= 20f;
+            sfxManager.PlayGoodEndingMusic();
         }
         else
         {
             titleText.text = "Contract terminated? No.";
             gameOverText.text = "You failed to meet the quota. The exit doors have been permanently welded shut. \n\nYou are no longer a cook; you are now part of the kitchen's infrastructure. \n\nHope you like the smell of grease... forever";
             spotlight.intensity= 0.0f;
+            sfxManager.PlayBadEndingMusic();
         }
     }
 

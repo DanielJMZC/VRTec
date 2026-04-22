@@ -9,22 +9,39 @@ public class SpawnController : MonoBehaviour
     [SerializeField] private float minSpawnDelay;
     [SerializeField] private float maxSpawnDelay;
 
-    private bool canSpawn= true;
+    private bool canSpawn = false;
 
-    void Start()
+    public void StartSpawning()
     {
+        Debug.Log("StartSpawning llamado");
+        Debug.Log("clientPrefab: " + (clientPrefab != null ? clientPrefab.name : "NULL"));
+        Debug.Log("spawnPoint: " + (spawnPoint != null ? spawnPoint.name : "NULL"));
+        Debug.Log("minSpawnDelay: " + minSpawnDelay);
+        Debug.Log("maxSpawnDelay: " + maxSpawnDelay);
+        
+        if (clientPrefab == null || spawnPoint == null)
+        {
+            Debug.LogError("ERROR: clientPrefab o spawnPoint no están asignados en SpawnController");
+            return;
+        }
+        
+        canSpawn = true;
         StartCoroutine(SpawnRoutine());
     }
+
     private IEnumerator SpawnRoutine()
     {
-        Debug.Log("Iniciando rutina de spawn"); 
+        Debug.Log("SpawnRoutine INICIADA - canSpawn: " + canSpawn); 
         while (canSpawn)
         {
-            float nextWait=Random.Range(minSpawnDelay, maxSpawnDelay);
+            float nextWait = Random.Range(minSpawnDelay, maxSpawnDelay);
+            Debug.Log("Esperando " + nextWait + " segundos antes de spawnear");
             yield return new WaitForSeconds(nextWait);
-
+            
+            Debug.Log("Intentando spawnear cliente...");
             SpawnClient();
         }
+        Debug.Log("SpawnRoutine FINALIZADA");
     }
 
     private void SpawnClient()
