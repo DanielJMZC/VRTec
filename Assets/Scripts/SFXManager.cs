@@ -1,3 +1,4 @@
+using UnityEditor.Search;
 using UnityEngine;
 
 public class SFXManager : MonoBehaviour
@@ -21,6 +22,8 @@ public class SFXManager : MonoBehaviour
     [Header("Music")]
     [SerializeField] private AudioClip backgroundMusic;
     [SerializeField] private AudioClip intenseMusic;
+    [SerializeField] private AudioClip BadEndingMusic;
+    [SerializeField] private AudioClip GoodEndingMusic;
     [SerializeField] private float musicTransitionSpeed = 1f;
 
     private float musicIntensity = 0f;
@@ -42,6 +45,24 @@ public class SFXManager : MonoBehaviour
         {
             musicAudioSource.pitch = Mathf.Lerp(1f, 1.5f, musicIntensity);
             musicIntensity = Mathf.Max(0, musicIntensity - Time.deltaTime * musicTransitionSpeed);
+        }
+    }
+    public void PlayGoodEndingMusic()
+    {
+        if (musicAudioSource != null && GoodEndingMusic != null)
+        {
+            musicAudioSource.clip = GoodEndingMusic;
+            musicAudioSource.loop = false;
+            musicAudioSource.Play();
+        }
+    }
+    public void PlayBadEndingMusic()
+    {
+        if (musicAudioSource != null && BadEndingMusic != null)
+        {
+            musicAudioSource.clip = BadEndingMusic;
+            musicAudioSource.loop = false;
+            musicAudioSource.Play();
         }
     }
     public void PlayClientHappySFX()

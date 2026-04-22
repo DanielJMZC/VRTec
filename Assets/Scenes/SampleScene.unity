@@ -4597,6 +4597,7 @@ MonoBehaviour:
   timerHeader: {fileID: 1690882754407972968}
   client: {fileID: 1546513618}
   sFXManager: {fileID: 800542449}
+  spawnController: {fileID: 1759295565}
   score: 0
   quota: 3
 --- !u!1 &320593660 stripped
@@ -12488,6 +12489,8 @@ MonoBehaviour:
   buttonClickSFX: {fileID: 8300000, guid: dc78cf7159ddb86498de2968275e21d4, type: 3}
   backgroundMusic: {fileID: 8300000, guid: e6416d8c4ded6430c9b14d2a8496ab25, type: 3}
   intenseMusic: {fileID: 8300000, guid: e6416d8c4ded6430c9b14d2a8496ab25, type: 3}
+  BadEndingMusic: {fileID: 8300000, guid: b17b6132dbee34145bfb797e22101229, type: 3}
+  GoodEndingMusic: {fileID: 8300000, guid: 9f501c9c2a30e224c85835b7399e1935, type: 3}
   musicTransitionSpeed: 1
 --- !u!4 &800542450
 Transform:
