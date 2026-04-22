@@ -12,6 +12,7 @@ TagManager:
   - RestaurantKey
   - PantryKey
   - Pan
+  - Dish
   layers:
   - Default
   - TransparentFX

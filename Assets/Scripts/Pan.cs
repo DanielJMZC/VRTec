@@ -1,25 +1,32 @@
 using UnityEngine;
-
 public class Pan : MonoBehaviour
 {
-    // This function is called automatically when a collision starts
-    void OnCollisionEnter(Collision collision)
-    {
-        // 1. Check if the object hit has a specific tag
-        if (collision.gameObject.CompareTag("Food"))
-        {
-            Meat meat = collision.gameObject.GetComponent<Meat>();
+    public GameObject firstPan;
+    public GameObject secondPan;
+    public int counter;
 
-             if (meat != null && meat.preparedPrefab != null)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Pan")) 
+        {
+            if(other.gameObject.name.Contains("First"))
             {
-                Instantiate(meat.preparedPrefab, 
-                            collision.transform.position, 
-                            collision.transform.rotation);
+                firstPan.SetActive(true);
+                counter++;
+            } else
+            {
+                secondPan.SetActive(true);
+                counter++;
             }
 
+            if (counter == 2)
+            {
+                this.gameObject.GetComponent<ProximityCanvas>().canvas.SetActive(false);
+                Destroy(this.gameObject);
+            }
 
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
         }
-
     }
+
 }

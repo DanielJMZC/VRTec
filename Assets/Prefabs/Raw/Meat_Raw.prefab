@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 5410458862675365410}
   - component: {fileID: 6269986452916759004}
   - component: {fileID: 7858930827789157485}
-  - component: {fileID: 6685912302257528860}
   - component: {fileID: 6250793009183195017}
   - component: {fileID: 4145999290101428942}
   - component: {fileID: 7038919365831151573}
   - component: {fileID: 1115508385263556241}
+  - component: {fileID: -1870134117168299074}
   m_Layer: 0
   m_Name: Meat_Raw
   m_TagString: Food
@@ -95,27 +95,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6685912302257528860
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4953070721710269836}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.35
-  m_Center: {x: 0, y: 0.099999994, z: 0}
 --- !u!54 &6250793009183195017
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -157,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders:
-  - {fileID: 6685912302257528860}
+  - {fileID: 0}
   m_InteractionLayers:
     m_Bits: 4294967295
   m_DistanceCalculationMode: 1
@@ -328,3 +307,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Meat
   preparedPrefab: {fileID: 178527446596572757, guid: 2dd65bd3c23bd443a92fd7120d24a2e8, type: 3}
+--- !u!65 &-1870134117168299074
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4953070721710269836}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7, y: 0.20000002, z: 0.7}
+  m_Center: {x: 0, y: 0.099999994, z: 0}

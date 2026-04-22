@@ -2,9 +2,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine.Rendering;
 
+using TMPro;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Collider))]
@@ -14,18 +13,46 @@ public class CleintController : MonoBehaviour
     private Transform offView;
     private Renderer targetRenderer;
     
+    
+    [SerializeField] private GameObject canvasDialogue; 
+    [SerializeField] private TextMeshProUGUI textDialogue;
     [SerializeField] private float updateSpeed = 0.01f;
     [SerializeField] private float maxTemp;
     [SerializeField] private float minTemp;
     [SerializeField] private ClienteTimer clienteTimer;
 
     [SerializeField] private HamburguerStruct hamburguerStruct;
-    public float waitTimeBeforeOffView=1f;
-
+    public float waitTimeBeforeOffView=2f;
+    List<string> CorrectOrderDialogue = new List<string>
+    {
+        "Yes! This is exactly what I wanted. You nailed it.",
+        "Finally, someone who actually listens.",
+        "Okay, I wasn't sure you'd get it, but this is perfect.",
+        "This is exactly what I had in mind. Well done.",
+        "Mmm. You understood the assignment.",
+        "Don't tell anyone, but this might be the best burger I've ever had.",
+        "You read my mind. Seriously.",
+        "I'm coming back tomorrow. And the day after.",
+        "That's it. That's the one. Thank you.",
+        "Okay, you're forgiven for making me wait.",
+    };
+    List<string> IncorrectOrderDialogue = new List<string>
+    {
+        "This... this is not what I said.",
+        "Did you even hear me? I'm not eating this.",
+        "I feel like we had a miscommunication somewhere.",
+        "I specifically said — you know what, never mind.",
+        "Whoever made this clearly wasn't paying attention.",
+        "I don't even know where to begin. This is wrong on multiple levels.",
+        "I'm going to need you to try again.",
+        "I appreciate the effort. I do. But no.",
+        "There is definitely something in here that should not be in here.",
+        "This is a disaster. A delicious-looking disaster, but still a disaster.",
+    };
     private NavMeshAgent agent;
     private bool isRetiring = false;
     public List<string> order;
-    public string nombreOrden;
+    public string nombreOrden, riddle;
 
 
     void Awake()
@@ -59,7 +86,7 @@ public class CleintController : MonoBehaviour
 
         if(hamburguerStruct != null)
         {
-            order = hamburguerStruct.GetOrder(out nombreOrden);
+            order = hamburguerStruct.GetOrder(out nombreOrden, out riddle);
             Debug.Log("Orden generada: " + nombreOrden);
         }else
         {
@@ -79,8 +106,17 @@ public class CleintController : MonoBehaviour
             
             if (!isRetiring && target != offView && HasReachedDestination())
             {
-                
+
+                MostrarDialogo();
                 StartCoroutine(WaitAndGoOffView());
+            }
+            if (isRetiring && target == offView && HasReachedDestination())
+            {
+                OcultarDialogo();
+                
+                Debug.Log("Cliente se ha retirado. Destruyendo objeto.");
+                Destroy(gameObject);
+                yield break;
             }
 
             yield return wait;
@@ -105,6 +141,7 @@ public class CleintController : MonoBehaviour
 
     private IEnumerator WaitAndGoOffView()
     {
+        
         isRetiring = true;
         yield return new WaitForSeconds(waitTimeBeforeOffView);
         
@@ -133,15 +170,11 @@ public class CleintController : MonoBehaviour
         
         List<string> platoList = burgerStack.ingredientsInBurger;
         
-        if (platoList == null || platoList.Count == 0)
-        {
-            Debug.LogError("El burger no tiene ingredientes");
-            return;
-        }
-        
         if (ListsMatch(order, platoList))
         {
             Debug.Log($"¡CORRECTO! El burger coincide con la orden '{nombreOrden}'");
+            textDialogue.text = CorrectOrderDialogue[Random.Range(0, CorrectOrderDialogue.Count)];
+            targetRenderer.material.color = Color.green;
             StartCoroutine(WaitAndGoOffView());
         }
         else
@@ -149,6 +182,7 @@ public class CleintController : MonoBehaviour
             Debug.LogWarning($"¡INCORRECTO! El burger no coincide con la orden '{nombreOrden}'.");
             Debug.Log($"Se esperaba: {string.Join(", ", order)}");
             Debug.Log($"Se recibió: {string.Join(", ", platoList)}");
+            textDialogue.text = IncorrectOrderDialogue[Random.Range(0, IncorrectOrderDialogue.Count)];
             targetRenderer.material.color = Color.red;
             StartExit(0.5f);
         }
@@ -156,6 +190,7 @@ public class CleintController : MonoBehaviour
     
     private void StartExit(float delay)
     {
+    
         isRetiring = true;
         if (delay > 0)
             StartCoroutine(WaitAndGo(delay));
@@ -187,6 +222,19 @@ public class CleintController : MonoBehaviour
         
         return true;
     }
+    public void MostrarDialogo()
+    {
+        if (canvasDialogue != null && textDialogue != null)
+        {
+            textDialogue.text = riddle; 
+            canvasDialogue.SetActive(true); 
+        }
+    }
 
+    public void OcultarDialogo()
+    {
+        if (canvasDialogue != null)
+            canvasDialogue.SetActive(false);
+    }
     
 }

@@ -20,6 +20,7 @@ public class PantryDoor : MonoBehaviour
         {
             isOpen = !isOpen;
             transform.localEulerAngles = isOpen ? openRotation : closedRotation;
+                 Destroy(collision.gameObject);
         }
     }
 }
