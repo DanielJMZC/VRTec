@@ -12329,6 +12329,65 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6000009, y: 2.8000002, z: 0.7713868}
   m_Center: {x: -0.7999996, y: 1.4000001, z: -0.0000005066395}
+--- !u!1 &787195262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787195264}
+  - component: {fileID: 787195263}
+  m_Layer: 0
+  m_Name: SFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &787195263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787195262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd913bb445ff014eb6e83b1c0c4e89d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SFXManager
+  sfxAudioSource: {fileID: 0}
+  musicAudioSource: {fileID: 0}
+  meatSFX: {fileID: 8300000, guid: b5e7a2016b4721e4392e820cb56565e1, type: 3}
+  cutIngredientsSFX: {fileID: 8300000, guid: c6a6ec7bd3198944ba49750c52877f94, type: 3}
+  hammerBreakSFX: {fileID: 8300000, guid: a8ad0691ab2bd8748b52b85d317f3709, type: 3}
+  keySFX: {fileID: 8300000, guid: 012def37def8a7f48ba28a2f150221a0, type: 3}
+  doorSFX: {fileID: 8300000, guid: 7b1a7f62b38aa144994fe68d3ba7d102, type: 3}
+  clientHappySFX: {fileID: 8300000, guid: 7d16378c4ad45d24097609e5eb9c17de, type: 3}
+  clientAngrySFX: {fileID: 8300000, guid: abf10cb16ab945e4dbe5d2076b25bdb3, type: 3}
+  buttonClickSFX: {fileID: 8300000, guid: dc78cf7159ddb86498de2968275e21d4, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: e6416d8c4ded6430c9b14d2a8496ab25, type: 3}
+  intenseMusic: {fileID: 8300000, guid: e6416d8c4ded6430c9b14d2a8496ab25, type: 3}
+  BadEndingMusic: {fileID: 8300000, guid: b17b6132dbee34145bfb797e22101229, type: 3}
+  GoodEndingMusic: {fileID: 8300000, guid: 9f501c9c2a30e224c85835b7399e1935, type: 3}
+  musicTransitionSpeed: 1
+--- !u!4 &787195264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787195262}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.84861, y: 3.31548, z: 1.65811}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &801673140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38890,3 +38949,4 @@ SceneRoots:
   - {fileID: 294883828}
   - {fileID: 1341335989}
   - {fileID: 2044612903}
+  - {fileID: 787195264}

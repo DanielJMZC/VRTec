@@ -13,15 +13,16 @@ public class GameController : MonoBehaviour
 
      public GameObject player; // Continuous Move Provider
 
-     public Canvas startCanvas;
-     public int prepTimer = 180;
-     public int serveTimer = 300;
+    public Canvas startCanvas;
+    public int prepTimer = 20;
+    public int serveTimer = 300;
 
-     public TextMeshProUGUI timer;
-     public TextMeshProUGUI timerHeader;
-     public TextMeshProUGUI client;
-     public SFXManager sFXManager;
-     public int score;
+    public TextMeshProUGUI timer;
+    public TextMeshProUGUI timerHeader;
+    public TextMeshProUGUI client;
+    public SFXManager sFXManager;
+    public SpawnController spawnController;
+    public int score;
      public int quota;
 
     void Awake()
@@ -29,7 +30,7 @@ public class GameController : MonoBehaviour
         Instance = this;
     }
 
-       void Start()
+    void Start()
     {
         player.GetComponent<ContinuousMoveProvider>().enabled = false;
         client.text = "Clients Served Correctly: " + score + "/" + quota;
@@ -74,6 +75,15 @@ public class GameController : MonoBehaviour
     {
         yield return StartCoroutine(PrepTimer());
         timerHeader.text = "Time to Serve!";
+        if (spawnController != null)
+        {
+            Debug.Log("SpawnController encontrado, iniciando spawn");
+            spawnController.StartSpawning();
+        }
+        else
+        {
+            Debug.LogError("SpawnController NO ESTÁ ASIGNADO en el inspector de GameController");
+        }
         yield return StartCoroutine(ServeTimer());
         yield return StartCoroutine(EndMatch());
     }
@@ -87,6 +97,10 @@ public class GameController : MonoBehaviour
 
     IEnumerator EndMatch()
     {
+        if (spawnController != null)
+        {
+            spawnController.StopSpawning();
+        }
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.SetInt("Quota", quota);
         timer.text = "00:00";
